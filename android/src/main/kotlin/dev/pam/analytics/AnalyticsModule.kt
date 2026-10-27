@@ -69,7 +69,7 @@ class AnalyticsModule(
                 is WireValue.Text -> putString(name, value.value)
                 is WireValue.Integer -> putLong(name, value.value)
                 is WireValue.Decimal -> putDouble(name, value.value)
-                is WireValue.Flag -> putLong(name, if (value.value) 1 else 0)
+                is WireValue.Flag -> putLong(name, if (value.value) 1L else 0L)
             }
         }
     }

@@ -28,6 +28,22 @@ Every call is fire-and-forget. The optional completion receives
   at most 25 parameters, text values cut to 100 characters, and no
   `firebase_`, `google_` or `ga_` prefixes.
 
+## With `pam-native-firebase`
+
+`pushinbr/pam-native-firebase` links the `FirebaseAnalytics` Swift product,
+which pulls `GoogleAppMeasurement` with `GoogleAppMeasurementIdentitySupport`
+(IDFA) and `GoogleAdsOnDeviceConversion`. Swift Package Manager links the union
+of both plugins' products, so an app that installs both ships IDFA support on
+iOS and this plugin's "no IDFA" guarantee no longer holds. Both plugins also
+drive the same `Analytics` singleton, so collection and consent set by one
+apply to the other.
+
+- Android stays clean: this plugin's manifest removes the AD_ID and
+  AdServices permissions and disables ADID/SSAID for the whole merged app.
+- iOS: use this plugin alone for analytics, or keep `pam-native-firebase`
+  without its `FirebaseAnalytics` product (switch it to
+  `FirebaseAnalyticsCore`). Do not ship both products in one app.
+
 ## Configuration
 
 The plugin reuses the project's Firebase configuration:

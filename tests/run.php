@@ -138,7 +138,11 @@ $test('manifest keeps advertising identifiers off on both platforms', static fun
         $expect(preg_match('#<key>'.$key.'</key>\s*<false/>#', $plist) === 1, "ios {$key}=false");
     }
     $plugin = json_decode((string) file_get_contents($root.'/pam-native.plugin.json'), true, flags: JSON_THROW_ON_ERROR);
-    $expect(!in_array('FirebaseAnalytics', $plugin['ios']['swiftPackages'][0]['products'], true), 'iOS links the analytics core without IDFA support');
+    $products = $plugin['ios']['swiftPackages'][0]['products'];
+    $expect(in_array('FirebaseAnalyticsCore', $products, true), 'iOS links FirebaseAnalyticsCore (firebase-ios-sdk 12.17.0 product)');
+    foreach (['FirebaseAnalytics', 'FirebaseAnalyticsIdentitySupport'] as $product) {
+        $expect(!in_array($product, $products, true), "iOS does not link {$product} (IDFA support)");
+    }
 });
 
 $failures = 0;
