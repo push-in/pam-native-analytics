@@ -1,0 +1,54 @@
+{
+    "$schema": "vendor/pushinbr/pam-native/resources/pam-native.plugin.schema.json",
+    "version": 1,
+    "protocol": 1,
+    "pamNative": {
+        "minimum": "1.0.0",
+        "maximumExclusive": "2.0.0"
+    },
+    "capabilities": {
+        "required": ["runtime.modules.v1", "wire.binary.v1"],
+        "optional": []
+    },
+    "php": {
+        "provider": "Pam\\Native\\Analytics\\AnalyticsPluginProvider"
+    },
+    "android": {
+        "namespace": "dev.pam.analytics",
+        "minSdk": 26,
+        "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.INTERNET"
+        ],
+        "manifest": "android/src/main/AndroidManifest.xml",
+        "dependencies": [
+            "com.google.firebase:firebase-analytics:23.2.0",
+            "com.google.firebase:firebase-common:22.2.0"
+        ],
+        "sourceDirs": ["android/src/main/kotlin"]
+    },
+    "ios": {
+        "minimumVersion": "15.0",
+        "sourceDirs": ["ios/Sources"],
+        "infoPlist": "ios/Info.plist",
+        "swiftPackages": [
+            {
+                "url": "https://github.com/firebase/firebase-ios-sdk.git",
+                "requirement": {"kind": 1, "value": "12.17.0"},
+                "products": [
+                    "FirebaseAnalyticsCore",
+                    "FirebaseCore"
+                ]
+            }
+        ]
+    },
+    "idl": "pam-native.idl.json",
+    "modules": [
+        {
+            "name": "analytics",
+            "class": "dev.pam.analytics.AnalyticsModule",
+            "iosClass": "AnalyticsModule"
+        }
+    ],
+    "views": []
+}

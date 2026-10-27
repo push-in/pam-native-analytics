@@ -1,0 +1,36 @@
+{
+    "name": "pushinbr/pam-native-analytics",
+    "description": "Privacy-safe product analytics (Firebase Analytics without advertising identifiers) for PAM Native.",
+    "type": "pam-native-plugin",
+    "keywords": [
+        "pam-native",
+        "analytics",
+        "firebase",
+        "privacy"
+    ],
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^8.5",
+        "pushinbr/pam-native": "^1.0"
+    },
+    "require-dev": {
+        "pushinbr/pam-native-testing": "^0.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pam\\Native\\Analytics\\": "src/"
+        }
+    },
+    "extra": {
+        "pam-native": {
+            "plugin": "pam-native.plugin.json"
+        }
+    },
+    "scripts": {
+        "test": "php tests/run.php"
+    },
+    "config": {
+        "platform-check": true,
+        "sort-packages": true
+    }
+}

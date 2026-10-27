@@ -1,0 +1,13 @@
+{
+    "$schema": "vendor/pushinbr/pam-native-plugin-kit/resources/pam-native.idl.schema.json",
+    "version": 1,
+    "namespace": "Pam.Analytics",
+    "enums": {
+        "AnalyticsOperationState": {
+            "Succeeded": 1,
+            "Failed": 2,
+            "Unavailable": 3
+        }
+    },
+    "records": {}
+}
