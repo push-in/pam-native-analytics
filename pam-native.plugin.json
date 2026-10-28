@@ -18,7 +18,8 @@
         "minSdk": 26,
         "permissions": [
             "android.permission.ACCESS_NETWORK_STATE",
-            "android.permission.INTERNET"
+            "android.permission.INTERNET",
+            "android.permission.WAKE_LOCK"
         ],
         "manifest": "android/src/main/AndroidManifest.xml",
         "dependencies": [

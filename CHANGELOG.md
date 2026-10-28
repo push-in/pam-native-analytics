@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 - unreleased
+## 0.1.0 - 2026-10-27
 
 - `Analytics::setConsent()`, `setCollectionEnabled()`, `logEvent()` and
   `setScreen()` over Firebase Analytics on Android (Kotlin) and iOS (Swift,
@@ -12,4 +12,8 @@
   `FirebaseAnalytics.setConsent(Map<ConsentType, ConsentStatus>)` API.
 - Documented the IDFA conflict with `pam-native-firebase` (its
   `FirebaseAnalytics` product brings IDFA support back on iOS).
-- Pending: Android and iOS compilation in a real host build.
+- Declares `WAKE_LOCK`, which `FirebaseAnalytics.getInstance` needs (Android lint
+  `MissingPermission`).
+- Compiled against the PAM Native host build: Kotlin with lint as errors, and
+  Swift for the iOS Simulator with firebase-ios-sdk 12.17.0 (no IdentitySupport
+  or AdSupport linked).
